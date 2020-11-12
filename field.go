@@ -1,4 +1,4 @@
-package crypto_ecc_s256
+package ecc
 
 // 参考文献:[HAC]:《密码学应用手册》，范奥尔斯考特，范斯通。http://cacr.uwaterloo.ca/hac/
 

@@ -1,4 +1,4 @@
-package crypto_ecc_s256
+package ecc
 
 import (
 	"compress/zlib"

@@ -1,4 +1,4 @@
-package crypto_ecc_s256
+package ecc
 
 /**
 这个包在内部对雅可比矩阵坐标进行操作。对于一个给定的曲线(x,y)位置,雅可比矩阵坐标是(x1,y1,z1)x = x1 / z1²和y = y₁/ z1³。
