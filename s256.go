@@ -382,7 +382,7 @@ func (curve *KoblitzCurve) splitK(k []byte) ([]byte, []byte, int, int) {
 // moduloReduce 将k从32字节以上减少到32字节以下。这是通过做一个简单的模曲线来实现的。我们可以这样做因为G ^ N = 1,因此任何其他有效点椭圆曲线有相同的顺序。
 func (curve *KoblitzCurve) moduloReduce(k []byte) []byte {
 
-	if len(k) > curve.byteSize {
+	if len(k) > curve.ByteSize {
 		tmpK := new(big.Int).SetBytes(k)
 		tmpK.Mod(tmpK, curve.N)
 		return tmpK.Bytes()
@@ -523,12 +523,12 @@ func (curve *KoblitzCurve) ScalarMult(Bx, By *big.Int, k []byte) (*big.Int, *big
 //ScalarBaseMult 返回k*G，其中G是组的基点，k是一个大端整数。 椭圆的一部分。曲线界面。
 func (curve *KoblitzCurve) ScalarBaseMult(k []byte) (*big.Int, *big.Int) {
 	newK := curve.moduloReduce(k)
-	diff := len(curve.bytePoints) - len(newK)
+	diff := len(curve.BytePoints) - len(newK)
 
 	qx, qy, qz := new(fieldVal), new(fieldVal), new(fieldVal)
 
 	for i, byteVal := range newK {
-		p := curve.bytePoints[diff+i][byteVal]
+		p := curve.BytePoints[diff+i][byteVal]
 		curve.addJacobian(qx, qy, qz, &p[0], &p[1], &p[2], qx, qy, qz)
 	}
 	return curve.fieldJacobianToBigAffine(qx, qy, qz)
@@ -554,8 +554,8 @@ func initS256() {
 	secp256k1.Gy = fromHex("483ADA7726A3C4655DA4FBFC0E1108A8FD17B448A68554199C47D08FFB10D4B8")
 	secp256k1.BitSize = 256
 	secp256k1.H = 1
-	secp256k1.q = new(big.Int).Div(new(big.Int).Add(secp256k1.P, big.NewInt(1)), big.NewInt(4))
-	secp256k1.byteSize = secp256k1.BitSize / 8
+	secp256k1.Q = new(big.Int).Div(new(big.Int).Add(secp256k1.P, big.NewInt(1)), big.NewInt(4))
+	secp256k1.ByteSize = secp256k1.BitSize / 8
 
 	if err := loadS256BytePoints(); err != nil {
 		panic(err)
