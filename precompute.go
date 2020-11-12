@@ -53,6 +53,6 @@ func loadS256BytePoints() error {
 			}
 		}
 	}
-	secp256k1.bytePoints = &bytePoints
+	secp256k1.BytePoints = &bytePoints
 	return nil
 }
