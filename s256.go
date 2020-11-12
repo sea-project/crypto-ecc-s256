@@ -19,14 +19,14 @@ var (
 // KoblitzCurve 支持koblitz曲线实现，它适合从crypto/elliptic到ECC曲线的接口。
 type KoblitzCurve struct {
 	*elliptic.CurveParams
-	q *big.Int
+	Q *big.Int
 	H int // 曲线的余子式。
 
 	// 字节大小就是位大小/ 8，它是为了方便而提供的，因为它是重复计算的。
-	byteSize int
+	ByteSize int
 
 	// 字节点
-	bytePoints *[32][256][3]fieldVal
+	BytePoints *[32][256][3]fieldVal
 
 	// 下面6个值专门用于ScalarMult中的自同态优化。
 	lambda *big.Int
