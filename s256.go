@@ -19,9 +19,8 @@ var (
 // KoblitzCurve 支持koblitz曲线实现，它适合从crypto/elliptic到ECC曲线的接口。
 type KoblitzCurve struct {
 	*elliptic.CurveParams
-	Q         *big.Int
-	H         int      // 曲线的余子式。
-	HalfOrder *big.Int // half the order N
+	Q *big.Int
+	H int // 曲线的余子式。
 
 	// 字节大小就是位大小/ 8，它是为了方便而提供的，因为它是重复计算的。
 	ByteSize int
