@@ -555,6 +555,7 @@ func initS256() {
 	secp256k1.Gy = fromHex("483ADA7726A3C4655DA4FBFC0E1108A8FD17B448A68554199C47D08FFB10D4B8")
 	secp256k1.BitSize = 256
 	secp256k1.H = 1
+	secp256k1.HalfOrder = new(big.Int).Rsh(secp256k1.N, 1)
 	secp256k1.Q = new(big.Int).Div(new(big.Int).Add(secp256k1.P, big.NewInt(1)), big.NewInt(4))
 	secp256k1.ByteSize = secp256k1.BitSize / 8
 
